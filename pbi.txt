@@ -1,0 +1,14 @@
+cumulative_revenue_measure = 
+VAR pdtrnk =
+rankx(
+All(Weekly_Demand_Data[center_id],
+'Weekly_Demand_Data'[TR])
+VAR RT=
+CALCULATE(
+'Weekly_Demand_Data'[TR],
+FILTER(
+ALL(fulfilment_center_info[center_id]),
+pdtrnk >= rankx(
+ALL(fulfilment_center_info[center_id]),
+'Weekly_Demand_Data'[TR])))
+RETURN RT
